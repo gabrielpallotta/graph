@@ -1,0 +1,3 @@
+[submodule "deps/sparsematrix"]
+	path = deps/sparsematrix
+	url = https://github.com/gabrielpallotta/sparsematrix
