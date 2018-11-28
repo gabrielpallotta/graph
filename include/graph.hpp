@@ -20,19 +20,19 @@ class Graph
       edges = SparseMatrix<int>(0);
     }
 
-    add_node(std::string node) {
+    void add_node(std::string node) {
 
     }
 
-    remove_node(std::string node) {
+    void remove_node(std::string node) {
 
     }
 
-    add_edge(std::string node1, std::string node2) {
+    void add_edge(std::string node1, std::string node2, int weight) {
 
     }
 
-    remove_edge(std::string node, std::string node2) {
+    void remove_edge(std::string node, std::string node2) {
 
     }
     
@@ -41,7 +41,7 @@ class Graph
     vector<std::string> nodes;
     SparseMatrix<int> edges;
 
-    get_node_index(std::string node_name) {
+    int get_node_index(std::string node_name) {
 
     }
 
