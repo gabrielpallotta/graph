@@ -1,5 +1,5 @@
-#include <iostream>
 #include <stdlib.h>
+#include <iostream>
 
 #ifdef _WIN32
   #define CLEAR_CMD "cls"
@@ -24,56 +24,77 @@ int main()
 
   while (true) {
     system(CLEAR_CMD);
+
     cout << "Grafo:" << endl;
-    // graph.print(cout);
     cout << graph << endl;
 
     cout << "1 - Inserir vertice" << endl;
     cout << "2 - Remover vertice" << endl;
     cout << "3 - Inserir aresta" << endl;
-    cout << "4 - Remover aresta" << endl;
+    cout << "4 - Remover aresta" << endl << endl;
 
     cout << "Digite uma opcao: ";
 
     int option;
     cin >> option;
 
-    int value;
+    int weight;
+    string name;
+    string other_name;
+
+    cout << endl;
     switch (option) {
       case 1:
-        // cout << "Digite o valor que deseja inserir: ";
-        // cin >> value;
-        // cout << endl;
-        // try {
-        //   graph.add(value, value);
-        //   cout << "Valor inserido com sucesso" ;
-        // } catch (invalid_argument e) {
-        //   cout << "Valor ja existe na arvore";
-        // }
+        cout << "Digite o nome do vertice que deseja inserir: ";
+        cin >> name;
+        cout << endl;
+        try {
+          graph.add_node(name);
+          cout << "Vertice inserido com sucesso" ;
+        } catch (invalid_argument e) {
+          cout << "Vertice ja existe no grafo";
+        } catch (length_error e) {
+          cout << "Numero de vertices limite excedido";
+        }
         break;
       case 2:
-        // cout << "Digite o valor que deseja remover: ";
-        // cin >> value;
-        // cout << endl;
-        // try {
-        //   graph.remove(value);
-        //   cout << "Valor removido com sucesso";
-        // } catch (invalid_argument e) {
-        //   cout << "Valor nao existe na arvore";
-        // }
+        cout << "Digite o nome do vertice que deseja remover: ";
+        cin >> name;
+        cout << endl;
+        try {
+          graph.remove_node(name);
+          cout << "Vertice removido com sucesso";
+        } catch (invalid_argument e) {
+          cout << "Vertice nao existe no grafo";
+        }
         break;
       case 3:
-        // cout << "Digite o valor que deseja consultar: ";
-        // cin >> value;
-        // cout << endl;
-        // int graph_value = graph.get(value);
-        // if (graph_value) {
-        //   cout << "Valor encontrado: " << graph_value;
-        // } else {
-        //   cout << "Valor nao encontrado na arvore";
-        // }
+        cout << "Digite o nome do primeiro vertice: ";
+        cin >> name;
+        cout << "Digite o nome do segundo vertice: ";
+        cin >> other_name;
+        cout << "Digite o peso da aresta: ";
+        cin >> weight;
+        cout << endl;
+        try {
+          graph.add_edge(name, other_name, weight);
+          cout << "Aresta inserida com sucesso";
+        } catch (invalid_argument e) {
+          cout << "Erro ao inserir aresta";
+        }
         break;
       case 4:
+        cout << "Digite o nome do primeiro vertice: ";
+        cin >> name;
+        cout << "Digite o nome do segundo vertice: ";
+        cin >> other_name;
+        cout << endl;
+        try {
+          graph.remove_edge(name, other_name);
+          cout << "Aresta removida com sucesso";
+        } catch (invalid_argument e) {
+          cout << "Erro ao remover aresta";
+        }
         break;
     }
     cout << endl << endl;
