@@ -124,6 +124,8 @@ ostream& operator<<(ostream& os, const Graph& graph)
     } 
   }
 
+  cout << endl;
+
   return os;
 }
 

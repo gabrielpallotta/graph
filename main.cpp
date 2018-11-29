@@ -25,8 +25,8 @@ int main()
   while (true) {
     system(CLEAR_CMD);
 
-    cout << "Grafo:" << endl;
-    cout << graph << endl;
+    cout << "Grafo:" << endl << endl;
+    cout << graph;
 
     cout << "1 - Inserir vertice" << endl;
     cout << "2 - Remover vertice" << endl;
