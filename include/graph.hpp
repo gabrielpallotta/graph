@@ -52,6 +52,10 @@ class Graph
       } 
       
       nodes[index] = "";
+      for (int i = 0; i < max_nodes; i++) {
+        edges.put(index, i, NULL_WEIGHT_VALUE);
+        edges.put(i, index, NULL_WEIGHT_VALUE);
+      }
     }
 
     bool has_node(std::string node) {
