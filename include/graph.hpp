@@ -107,7 +107,23 @@ class Graph
 
 ostream& operator<<(ostream& os, const Graph& graph)
 {
-  os << "Grafo";
+  for (int i = 0; i < graph.max_nodes; i++) {
+    if (!graph.nodes[i].empty()) {
+      cout << graph.nodes[i] << " ";
+    }
+  }
+
+  cout << endl << endl;
+
+  for (int i = 0; i < graph.max_nodes; i++) {
+    for (int j = 0; j < graph.max_nodes; j++) {
+      int weight = graph.edges.get(i, j);
+      if (weight != graph.NULL_WEIGHT_VALUE) {
+        os << graph.nodes[i] << "  " << weight << "  " << graph.nodes[j] << endl; 
+      }
+    } 
+  }
+
   return os;
 }
 
