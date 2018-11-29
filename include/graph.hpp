@@ -59,15 +59,34 @@ class Graph
     }
 
     void add_edge(std::string node1, std::string node2, int weight) {
+      int index1 = get_node_index(node1);
+      int index2 = get_node_index(node2);
 
+      if (index1 == -1 || index2 == -1) {
+        throw std::invalid_argument("Invalid node name");
+      } 
+      
+      edges.put(index1, index2, weight);
     }
 
-    void remove_edge(std::string node, std::string node2) {
+    void remove_edge(std::string node1, std::string node2) {
+      int index1 = get_node_index(node1);
+      int index2 = get_node_index(node2);
+      
+      if (index1 == -1 || index2 == -1) {
+        throw std::invalid_argument("Invalid node name");
+      }
 
+      if (edges.get(index1, index2) == NULL_WEIGHT_VALUE) {
+        throw std::invalid_argument("No connection exists between those 2 nodes");
+      }
+
+      edges.put(index1, index2, NULL_WEIGHT_VALUE);
     }
     
     friend ostream& operator<<(ostream& os, const Graph& graph);
   private:
+    int NULL_WEIGHT_VALUE = -1;
     int max_nodes;
     vector<std::string> nodes;
     SparseMatrix<int> edges;
